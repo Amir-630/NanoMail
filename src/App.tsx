@@ -1,14 +1,12 @@
 import { Box, CssBaseline, ThemeProvider } from '@mui/material';
-import { m3Theme } from './theme/m3Theme';
 import { NavigationRail } from './components/layout/NavigationRail';
 import { EmailListPanel } from './components/email/EmailListPanel';
 import { GlobalSearch } from './components/common/GlobalSearch';
+import { M3Box,  } from 'm3r';
 
 function App() {
   return (
-    <ThemeProvider theme={m3Theme}>
-      <CssBaseline />
-      <Box sx={{ display: 'flex', width: '100vw', height: '100vh', overflow: 'hidden' }}>
+      <M3Box sx={{ display: 'flex', width: '100vw', height: '100vh', overflow: 'hidden' }}>
         
         {/* Section 1: Navigation */}
         <NavigationRail />
@@ -28,8 +26,7 @@ function App() {
           </Box>
         </Box>
         
-      </Box>
-    </ThemeProvider>
+      </M3Box>
   );
 }
 
