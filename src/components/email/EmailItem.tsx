@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Box } from '@mui/material';
+import { M3ListItem, M3ListItemAvatar, M3Avatar, M3ListItemText, M3Typography, M3Box } from 'm3r';
 import type { Email } from '../../types';
 
 interface EmailItemProps {
@@ -10,7 +10,7 @@ interface EmailItemProps {
 
 export const EmailItem: React.FC<EmailItemProps> = ({ email, isSelected, onClick }) => {
   return (
-    <ListItem
+    <M3ListItem
       alignItems="flex-start"
       onClick={() => onClick(email.id)}
       sx={{
@@ -21,34 +21,38 @@ export const EmailItem: React.FC<EmailItemProps> = ({ email, isSelected, onClick
         borderBottom: '1px solid #E0E0E0'
       }}
     >
-      <ListItemAvatar>
-        <Avatar src={email.avatar} alt={email.sender} />
-      </ListItemAvatar>
-      <ListItemText
+      <M3ListItemAvatar>
+        <M3Avatar src={email.avatar} alt={email.sender} />
+      </M3ListItemAvatar>
+      <M3ListItemText
         primary={
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography variant="subtitle1" sx={{ color: 'text.primary' }}>{email.sender}</Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <Typography variant="caption" sx={{ fontWeight: 500 }}>{email.time}</Typography>
+          <M3Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            {/* @ts-ignore */}
+            <M3Typography variant="subtitle1" sx={{ color: 'text.primary' }}>{email.sender}</M3Typography>
+            <M3Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              {/* @ts-ignore */}
+              <M3Typography variant="caption" sx={{ fontWeight: 500 }}>{email.time}</M3Typography>
               {email.unreadCount && (
-                <Box sx={{ bgcolor: 'primary.main', color: 'white', borderRadius: '50%', width: 20, height: 20, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem' }}>
+                <M3Box sx={{ bgcolor: 'primary.main', color: 'white', borderRadius: '50%', width: 20, height: 20, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem' }}>
                   {email.unreadCount}
-                </Box>
+                </M3Box>
               )}
-            </Box>
-          </Box>
+            </M3Box>
+          </M3Box>
         }
         secondary={
-          <Box component="span">
-            <Typography component="span" variant="body2" sx={{ display: 'block', fontWeight: !email.read ? 600 : 400, color: 'text.primary' }}>
+          <M3Box component="span">
+            {/* @ts-ignore */}
+            <M3Typography component="span" variant="body2" sx={{ display: 'block', fontWeight: !email.read ? 600 : 400, color: 'text.primary' }}>
               {email.subject}
-            </Typography>
-            <Typography component="span" variant="body2" sx={{ display: 'block', color: 'text.secondary', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            </M3Typography>
+            {/* @ts-ignore */}
+            <M3Typography component="span" variant="body2" sx={{ display: 'block', color: 'text.secondary', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {email.snippet}
-            </Typography>
-          </Box>
+            </M3Typography>
+          </M3Box>
         }
       />
-    </ListItem>
+    </M3ListItem>
   );
 };

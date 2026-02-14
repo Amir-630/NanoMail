@@ -1,8 +1,7 @@
-import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 import { NavigationRail } from './components/layout/NavigationRail';
 import { EmailListPanel } from './components/email/EmailListPanel';
 import { GlobalSearch } from './components/common/GlobalSearch';
-import { M3Box,  } from 'm3r';
+import { M3Box } from 'm3r';
 
 function App() {
   return (
@@ -15,16 +14,16 @@ function App() {
         <EmailListPanel />
         
         {/* Section 3: Main Content Area */}
-        <Box sx={{ flexGrow: 1, height: '100vh', bgcolor: 'white', display: 'flex', flexDirection: 'column' }}>
-          <Box sx={{ p: 2, display: 'flex', justifyContent: 'center', bgcolor: '#FDFCFE' }}>
+        <M3Box sx={{ flexGrow: 1, height: '100vh', bgcolor: 'white', display: 'flex', flexDirection: 'column' }}>
+          <M3Box sx={{ p: 2, display: 'flex', justifyContent: 'center', bgcolor: '#FDFCFE' }}>
             <GlobalSearch />
-          </Box>
+          </M3Box>
           
           {/* Detailed View / Outlet would go here */}
-          <Box sx={{ flexGrow: 1, bgcolor: 'white' }}>
+          <M3Box sx={{ flexGrow: 1, bgcolor: 'white' }}>
              {/* Future: <EmailDetailView /> */}
-          </Box>
-        </Box>
+          </M3Box>
+        </M3Box>
         
       </M3Box>
   );
