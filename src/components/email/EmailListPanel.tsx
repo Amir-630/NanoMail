@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { M3Box, M3Typography, M3Stack, M3Chip, M3List, M3Divider } from 'm3r';
 import { Menu, Refresh, MoreVert } from '@mui/icons-material';
 import { EmailItem } from './EmailItem';
@@ -62,8 +62,17 @@ export const EmailListPanel: React.FC<EmailListPanelProps> = ({
 
   const handleEmailClick = (id: number) => {
     setSelectedId(id);
-    onSelectEmail(id, filteredEmails);
+    onSelectEmail(id, allEmails);
   };
+
+  // Auto-load the first email when filtered emails change
+  useEffect(() => {
+    if (filteredEmails.length > 0) {
+      const firstEmail = filteredEmails[0];
+      setSelectedId(firstEmail.id);
+      onSelectEmail(firstEmail.id, allEmails);
+    }
+  }, [filteredEmails, allEmails, onSelectEmail]);
 
   const inboxCount = allEmails.filter(e => e.category === 'inbox').length;
   const sentCount = allEmails.filter(e => e.category === 'sent').length;
