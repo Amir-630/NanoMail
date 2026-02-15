@@ -5,6 +5,10 @@ import {
   ColorLens, Settings, Edit
 } from '@mui/icons-material';
 
+interface NavigationRailProps {
+  onComposeClick: () => void;
+}
+
 const NavItem = ({ icon, label, isActive, onClick }: { icon: React.ReactNode, label: string, isActive: boolean, onClick: () => void }) => (
   <M3Box onClick={onClick} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: 'pointer', mb: 3, opacity: isActive ? 1 : 0.6 }}>
     <M3Box sx={{
@@ -19,7 +23,7 @@ const NavItem = ({ icon, label, isActive, onClick }: { icon: React.ReactNode, la
   </M3Box>
 );
 
-export const NavigationRail = () => {
+export const NavigationRail: React.FC<NavigationRailProps> = ({ onComposeClick }) => {
   const [activeTab, setActiveTab] = useState('email');
 
   return (
@@ -28,7 +32,7 @@ export const NavigationRail = () => {
       display: 'flex', flexDirection: 'column', alignItems: 'center', py: 2,
       borderRight: '1px solid #E0E0E0'
     }}>
-      <M3IconButton sx={{ bgcolor: '#D0BCFF', color: '#381E72', mb: 4, width: 48, height: 48 }}>
+      <M3IconButton onClick={onComposeClick} sx={{ bgcolor: '#D0BCFF', color: '#381E72', mb: 4, width: 48, height: 48 }}>
         <Edit />
       </M3IconButton>
 
